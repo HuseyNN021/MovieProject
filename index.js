@@ -1,10 +1,5 @@
-let findH1 = document.querySelector('h2');
+let movies = [
 
-let findImg = document.querySelector('img');
-
-let findSlideButton = document.querySelector('.toRight');
-
-let arr = [
     {
         title: 'Mask',
         src: './images/Mask.jpg'
@@ -35,58 +30,24 @@ let arr = [
     },
 ]
 
-findH1.innerText = arr[0].title;
+let currentIndex = 0;
 
-findImg.src = arr[0].src;
+const titleElement = document.querySelector(".slideContent h2");
+const imageElement = document.querySelector(".slideContent img");
 
+const updateSlide = () => {
+    titleElement.textContent = movies[currentIndex].title;
+    imageElement.src = movies[currentIndex].src;
+};
 
-let count=0;
+document.querySelector(".toLeft").addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + movies.length) % movies.length;
+    updateSlide();
+});
 
-findSlideButton.addEventListener("click", () => {
-    count++;
-    console.log(count);
-    
-    if(count>arr.length-1){
-       count=0;
-    }
+document.querySelector(".toRight").addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % movies.length;
+    updateSlide();
+});
 
-    findH1.innerText = arr[count].title;
-
-    findImg.src = arr[count].src;
-
-
-    console.log(`Right title : ${arr[count].title} and img link : ${arr[count].src}`);
-    
-})
-
-let findLeftButton=document.querySelector('.toLeft')
-
-// let countLeft=arr.length
-
-findLeftButton.addEventListener('click',()=>{
-    count--;
-    console.log(count);
-
-    if(count<0){
-       count=arr.length-1;
-    }
-    
-
-    findH1.innerText = arr[count].title;
-
-    findImg.src = arr[count].src;
-
-
-    console.log(`Left title : ${arr[count].title} and img link : ${arr[count].src}`);
-})
-
-
-    arr.forEach(element => {
-
-        console.log(`${element.title} and ${element.src}`);
-    });
-    let a=2;
-    let b=4;
-
-
-console.log(a%b);
+updateSlide();
