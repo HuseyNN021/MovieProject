@@ -60,7 +60,10 @@ form button {
     color: #f8f7f4;
     cursor: pointer;
 }
-
+a{
+    color: inherit;
+    text-decoration: none;
+}
 
 /* Slider Layout */
 
@@ -95,6 +98,8 @@ form button {
 }
 
 .slider>button {
+    width: 7rem;
+    text-align: center;
     padding: 1.5rem;
     font-size: 15px;
     border-radius: 3rem;
